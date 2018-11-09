@@ -3,27 +3,46 @@
     <meta charset="UTF-8">
     <script src="vendor/vue.min.js"></script>
     <script src="vendor/ele.js"></script>
-    <link rel="stylesheet" href="vendor/ele.css">
+    <link rel="stylesheet" href="vendor/bundle.css">
 </head>
 
 <body>
 
 <div id="app">
 
-    <el-dialog>
+    <el-dialog
+            title="登录"
+            width="500px"
+            :visible.sync="dialogLogin"
+           >
+
+        <el-input placeholder="用户名" v-model="username" style="margin-bottom: 20px">
+            <template slot="prepend">用户</template>
+        </el-input>
+
+        <el-input type="password" placeholder="密码" v-model="password">
+            <template slot="prepend">密码</template>
+        </el-input>
+
+        <span slot="footer" class="dialog-footer">
 
 
+
+          <el-button type="primary" @click="dialogVisible = false">登录</el-button>
+        </span>
     </el-dialog>
 
 </div>
 <script>
-    app = new Vue({
+    window.app = new Vue({
         el:'#app',
         data:{
-
+            username:'',
+            password:'',
+            dialogLogin:false
         },
         mounted:function () {
-            
+            this.dialogLogin = true
         },
         methods:{
 
